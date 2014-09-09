@@ -1,0 +1,1 @@
+var typeVariable=function(a){var b=typeof a;return b},a=[1,2,4];console.log(typeVariable(typeVariable));
