@@ -1,23 +1,105 @@
-console.log('через тайп оф');
-var typeVariable = function (variable) {
-	var type = typeof (variable);
-	return type;
-};
-console.log(typeVariable(1));
-console.log(typeVariable('1'));
-console.log(typeVariable([1,2,3]));
-console.log(typeVariable(typeVariable));
-console.log(typeVariable(NaN));
-console.log(typeVariable(null));
-console.log(typeVariable(undefined));
-console.log(typeVariable(Object));
-console.log('через обджект ту стринг');
-function typeOf(value) { return Object.prototype.toString.call(value).slice(8, -1); };
-console.log(typeOf(1));
-console.log(typeOf('1'));
-console.log(typeOf([1,2,3]));
-console.log(typeOf(typeVariable));
-console.log(typeOf(NaN));
-console.log(typeOf(null));
-console.log(typeOf(undefined));
-console.log(typeOf(Object));
+$(document).ready(function(){
+	var inputData = 	[[1, 50, 100],
+						 [2, 52, 100],
+						 [3, 54, 105],
+						 [4, 56, 105],
+						 [5, 56, 110],
+						 [6, 60, 110],
+						 [7, 62, 110],
+						 [8, 64, 115],
+						 [9, 66, 120],
+						 [10, 66, 125],
+						 [11, 66, 120],
+						 [12, 54, 115],
+						 [13, 52, 110],
+						 [14, 60, 110],
+						 [15, 56, 110],
+						 [16, 56, 105],
+						 [17, 54, 105],
+						 [18, 52, 100],
+						 [19, 50, 100],
+						 [20, 50, 100],
+						 [21, 50, 100],
+						 [22, 52, 100],
+						 [23, 54, 105],
+						 [24, 56, 105],
+						 [25, 56, 110],
+						 [26, 60, 110],
+						 [27, 62, 110],
+						 [28, 64, 115],
+						 [29, 66, 120],
+						 [30, 66, 125],
+						 [31, 66, 120],
+						 [32, 54, 115],
+						 [33, 52, 110],
+						 [34, 60, 110],
+						 [35, 56, 110],
+						 [36, 56, 105],
+						 [37, 54, 105],
+						 [38, 52, 100],
+						 [39, 50, 100],
+						 [40, 50, 100],
+						 [41, 50, 100],
+						 [42, 52, 100],
+						 [43, 54, 105],
+						 [44, 56, 105],
+						 [45, 56, 110],
+						 [46, 60, 110],
+						 [47, 62, 110],
+						 [48, 64, 115],
+						 [49, 66, 120],
+						 [50, 66, 125],
+						 [51, 66, 120],
+						 [52, 54, 115],
+						 [53, 52, 110],
+						 [54, 60, 110],
+						 [55, 56, 110],
+						 [56, 56, 105],
+						 [57, 54, 105],
+						 [58, 52, 100],
+						 [59, 50, 100],
+						 [60, 50, 100],
+						 [61, 50, 100],
+						 [62, 52, 100],
+						 [63, 54, 105],
+						 [64, 56, 105],
+						 [65, 56, 110],
+						 [66, 60, 110],
+						 [67, 62, 110],
+						 [68, 64, 115],
+						 [69, 66, 120],
+						 [70, 66, 125],
+						 [71, 66, 120],
+						 [72, 54, 115],
+						 [73, 52, 110],
+						 [74, 60, 110],
+						 [75, 56, 110],
+						 [76, 56, 105],
+						 [77, 54, 105],
+						 [78, 52, 100],
+						 [79, 50, 100],
+						 [80, 50, 100]];
+
+	var timeLength = inputData.length;
+
+	// for (var i = 0; i < inputData.length; i++) {
+	// 	var x = inputData[i][1] + 'px';
+	// 	var y = inputData[i][2] + 'px';
+	// 	var timeShow = (timeLength-timeLength%60)/60 + "." + (timeLength-i)%60;
+	// 	var position = 'x = ' + x + '; ' + 'y = ' + y;
+	// 	console.log(timeShow + ' ' + position);
+	// };
+
+	// $('.item1').css({'left': x,'top': y});
+
+	var startPosition = 0;
+	var endPosition;
+	var k = endPosition/timeLength;
+	function start() {
+		setInterval(function() {
+			$('.position').css({'left': startPosition++  + 'px'});
+			console.log(startPosition);
+		}, 1000)
+	};
+	$('.play').on('click', start);
+});
