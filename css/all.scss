@@ -43,11 +43,9 @@ form, fieldset{
 	width:600px;
 	height:60px;
 	margin:0 auto;
-	overflow:hidden;
 }
 .slider .holder{
 	width:100%;
-	overflow:hidden;
 	height:20px;
 	margin:0 0 10px;
 	position:relative;
@@ -69,6 +67,16 @@ form, fieldset{
 	top:0;
 	background:#00f;
 }
+.slider .position .time{
+	position:absolute;
+	width:30px;
+	height:10px;
+	line-height:10px;
+	font-size:10px;
+	left:-14px;
+	bottom:100%;
+	text-align:center;
+}
 .slider .control{
 	text-align:center;
 	overflow:hidden;
@@ -81,4 +89,5 @@ form, fieldset{
 	height:30px;
 	line-height:30px;
 	background:#0f0;
+	cursor:pointer;
 }
