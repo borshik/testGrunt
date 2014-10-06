@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var inputData = 	[[1, 1, 1],
+	var inputData = 	[[[1, 1, 1],
 						 [2, 2, 1],
 						 [3, 4, 1],
 						 [4, 6, 1],
@@ -78,55 +78,162 @@ $(document).ready(function(){
 						 [77, 104, 108],
 						 [78, 102, 110],
 						 [79, 100, 112],
-						 [80, 100, 114]];
+						 [80, 100, 114]],
+						[[1, 6, 4],
+						 [2, 7, 4],
+						 [3, 9, 4],
+						 [4, 11, 4],
+						 [5, 11, 4],
+						 [6, 13, 5],
+						 [7, 15, 5],
+						 [8, 17, 5],
+						 [9, 19, 6],
+						 [10, 21, 7],
+						 [11, 23, 9],
+						 [12, 23, 11],
+						 [13, 23, 13],
+						 [14, 25, 13],
+						 [15, 27, 13],
+						 [16, 29, 13],
+						 [17, 31, 15],
+						 [18, 33, 17],
+						 [19, 35, 19],
+						 [20, 35, 21],
+						 [21, 35, 23],
+						 [22, 37, 23],
+						 [23, 39, 23],
+						 [24, 41, 25],
+						 [25, 41, 27],
+						 [26, 45, 29],
+						 [27, 47, 31],
+						 [28, 49, 33],
+						 [29, 51, 35],
+						 [30, 53, 37],
+						 [31, 55, 39],
+						 [32, 57, 41],
+						 [33, 57, 43],
+						 [34, 59, 43],
+						 [35, 61, 43],
+						 [36, 63, 45],
+						 [37, 65, 47],
+						 [38, 67, 47],
+						 [39, 69, 49],
+						 [40, 71, 51],
+						 [41, 73, 53],
+						 [42, 75, 55],
+						 [43, 77, 57],
+						 [44, 79, 59],
+						 [45, 79, 61],
+						 [46, 79, 63],
+						 [47, 79, 65],
+						 [48, 79, 67],
+						 [49, 81, 69],
+						 [50, 81, 71],
+						 [51, 81, 73],
+						 [52, 83, 75],
+						 [53, 83, 77],
+						 [54, 85, 79],
+						 [55, 85, 81],
+						 [56, 87, 83],
+						 [57, 87, 85],
+						 [58, 87, 87],
+						 [59, 85, 89],
+						 [60, 85, 91],
+						 [61, 85, 91],
+						 [62, 87, 91],
+						 [63, 89, 91],
+						 [64, 91, 93],
+						 [65, 91, 95],
+						 [66, 95, 95],
+						 [67, 97, 95],
+						 [68, 99, 95],
+						 [69, 101, 95],
+						 [70, 101, 97],
+						 [71, 101, 99],
+						 [72, 109, 101],
+						 [73, 107, 103],
+						 [74, 105, 105],
+						 [75, 111, 107],
+						 [76, 111, 109],
+						 [77, 109, 111],
+						 [78, 107, 113],
+						 [79, 105, 115],
+						 [80, 105, 117]]];							// массив с массивом массивов ))
 
-	var timeLength = inputData.length;
-	var time = inputData.length;
-	var startPosition = 0;
-	var endPosition;
-	var k = endPosition/timeLength;
-	var interval;
-	var x = inputData[0][1] + 'px';
-	var y = inputData[0][2] + 'px';
-	$('.item1').css({'left': x,'top': y});
-	function start() {
-		interval = setInterval(function() {
-			$('.position').css({'left': startPosition++  + 'px'});
-			var timeShow = (timeLength-timeLength%60)/60 + "." + (timeLength--)%60;
-			$('.time').text(timeShow);
-			for (var i = 0; i < inputData.length; i++) {
-				if (i === startPosition){
-					x = inputData[i][1] + 'px';
-					y = inputData[i][2] + 'px';
-					var timeShow = (timeLength-timeLength%60)/60 + "." + (timeLength-i)%60;
-					$('.item1').css({'left': x,'top': y});
-				}
-			};
-			// $('.play').addClass('pause').text('pause').removeClass('play');
-			console.log(timeShow);
-			if(startPosition === time) {
-				clearInterval(interval);
-			}
-		}, 1000)
+// 	[												список объектов
+// 		[			 объект с его параметрами (время )
+// 			[	t,	 в какую секунду объект находился
+//				x,	 в положении х
+//				y	 в положении у
+//			]
+// 		]
+// 	]
+	function slider() {												// функция слайдера при запуске которой будет выполняться задание от ТЛа
+		for ( var item = 0; item < inputData.length; item++){		// перебираем объекты для которых будет выполняться функция
+			var tank = $('<div class="tank"></div>');				// создать элемент визуализации
+			$('.visual').prepend(tank);								// создать визуализацию для каждого объекта
+			tank.addClass('item1');
+			var itemLife = inputData[item].length;					// продолжительность жизни каждого объекта равна количеству параметров
+			var x = inputData[item][0][1] + 'px';					// положение объекта по оси х в первую секунду жизни
+			var y = inputData[item][0][2] + 'px';					// положение объекта по оси у в первую секунду жизни
+			$('.item1').css({'left': x,'top': y});					// разместить объекты на карте согласно своим координатам в начале жизни
+			//alert(x);
+			//alert(y);
+		}
+		//alert('a');
 	};
-	function pause() {
-		clearInterval(interval);
-	};
-	function stop() {
-		clearInterval(interval);
-		$('.position').css({'left': '0px'});
-		startPosition = 0;
-		timeLength = inputData.length;
-		timeShow = (timeLength-timeLength%60)/60 + "." + timeLength%60;
-		$('.time').text(timeShow);
-		var x = inputData[0][1] + 'px';
-		var y = inputData[0][2] + 'px';
-		$('.item1').css({'left': x,'top': y});
-		// $('.play').text('play');
-		// $('.pause').addClass('play').text('play').removeClass('pause');
-	};
-	$('.play').on('click', start);
-	$('.stop').on('click', stop);
-	$('.pause').on('click', pause);
+	// var time = inputData[0].length;
+	// console.log(time);
+	// var startPosition = 0;
+	// var endPosition = 600;
+	// var k = endPosition/timeLength;
+	// // var c = k;
+	// var interval;
+	// var i;
+
+
+	// $('.item1').css({'left': x,'top': y});
+	// function start() {
+	// 	interval = setInterval(function() {
+	// 		var timeShow = (timeLength-timeLength%60)/60 + "." + (timeLength--)%60;
+	// 		$('.time').text(timeShow);
+	// 		for (var i = 0; i < inputData.length; i++) {
+	// 			if (inputData[i][1] === startPosition){
+	// 				$('.position').css({'left': (k = ++k) + 'px'});
+	// 				x = inputData[i][1][1] + 'px';
+	// 				y = inputData[i][1][2] + 'px';
+	// 				var timeShow = (timeLength-timeLength%60)/60 + "." + (timeLength-i)%60;
+	// 				$('.item1').css({'left': x,'top': y});
+	// 			}
+	// 		};
+	// 		// $('.play').addClass('pause').text('pause').removeClass('play');
+	// 		console.log(timeShow);
+	// 		if(startPosition === time) {
+	// 			clearInterval(interval);
+	// 		}
+	// 	}, 1000)
+	// };
+	// function pause() {
+	// 	clearInterval(interval);
+	// };
+	// function stop() {
+	// 	clearInterval(interval);
+	// 	$('.position').css({'left': '0px'});
+	// 	startPosition = 0;
+	// 	timeLength = inputData.length;
+	// 	timeShow = (timeLength-timeLength%60)/60 + "." + timeLength%60;
+	// 	$('.time').text(timeShow);
+	// 	var x = inputData[0][1] + 'px';
+	// 	var y = inputData[0][2] + 'px';
+	// 	$('.item1').css({'left': x,'top': y});
+	// 	// $('.play').text('play');
+	// 	// $('.pause').addClass('play').text('play').removeClass('pause');
+	// };
+	// $('.play').on('click', start);
+	// $('.stop').on('click', stop);
+	// $('.pause').on('click', pause);
+
+
+	slider();
 
 });
