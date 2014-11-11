@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
       build: {
-        src: ['js/*.js'],
+        src: ['js/main.js'],
         dest: 'js/build/global.js'
       }
     },
@@ -21,6 +21,16 @@ module.exports = function(grunt) {
       }
     },
 
+        watch: {
+            options: {
+              livereload: true,
+            },
+            src: {
+              files: ['js/libs/*.js', 'js/*.js', 'css/*.scss', '*.html'],
+              tasks: ['default'],
+            }
+        }
+
   });
 
   // Load the plugin that provides the "uglify" task.
@@ -29,6 +39,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify', 'sass', 'watch']);
+  grunt.registerTask('default', ['uglify', 'sass']);
+  grunt.registerTask('run', ['watch']);
 
 };
