@@ -25,20 +25,21 @@ form, fieldset{
 	background:#fff;
 }
 .visual{
-	width:600px;
-	height:600px;
+	width:400px;
+	height:400px;
 	border:1px solid #000;
 	margin:20px auto;
 	position:relative;
 }
-.item{
-	width:10px;
-	height:10px;
-	margin:-5px 0 0 -5px;
-	background:#f00;
+.elem{
+	width:6px;
+	height:6px;
+	margin:-3px 0 0 -3px;
 	position:absolute;
 	border-radius:50%;
 }
+.elem.item2{background:#000;}
+.elem.item1{background:#f00;}
 .slider{
 	width:600px;
 	height:60px;
@@ -91,3 +92,6 @@ form, fieldset{
 	background:#0f0;
 	cursor:pointer;
 }
+.slider .control span.prev,
+.slider .control span.next,
+.slider .control span.hide{display:none;}
